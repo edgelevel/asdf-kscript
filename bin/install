@@ -1,0 +1,24 @@
+#!/bin/bash
+# instructions taken straight from https://github.com/holgerbrandl/kscript#installation-without-sdkman
+if [ "$ASDF_INSTALL_TYPE" = "ref" ]
+then
+	git clone "$ASDF_INSTALL_VERSION" "$ASDF_INSTALL_PATH"
+else
+	mkdir -p "$ASDF_INSTALL_PATH"
+	cd "$ASDF_INSTALL_PATH" || exit 1
+
+	if [[ $ASDF_INSTALL_PATH =~ "$ASDF_INSTALL_VERSION" ]]; then
+		rm -rf *
+
+		VERSION=$(echo $ASDF_INSTALL_VERSION | sed -e "s#^.*-##")
+		FILE_NAME="kscript-${ASDF_INSTALL_VERSION}-bin"
+		ZIP="${FILE_NAME}.zip"
+		curl -OJL https://github.com/holgerbrandl/kscript/releases/download/v${VERSION}/${ZIP}
+		unzip -o ${ZIP}
+		rm ${ZIP}
+
+		cp -R ${FILE_NAME}/* .
+		rm -rf ${FILE_NAME}/
+		chmod +x bin/*
+	fi
+fi
