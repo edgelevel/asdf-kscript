@@ -9,6 +9,12 @@
 * [Java 6 to 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html) - You may want to try [asdf-java](https://github.com/skotchpine/asdf-java) `asdf plugin-add java`
 * [Kotlin](https://kotlinlang.org/) - You may want to try [asdf-kotlin](https://github.com/missingcharacter/asdf-kotlin) `asdf plugin-add kotlin https://github.com/missingcharacter/asdf-kotlin.git`
 
+## Install
+
+```shell
+asdf plugin-add kscript https://github.com/edgelevel/asdf-kscript.git
+```
+
 ## Use
 
 Check the [asdf](https://github.com/asdf-vm/asdf) readme for instructions on how to install & manage versions of kscript.
