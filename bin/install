@@ -1,5 +1,12 @@
 #!/bin/bash
 # instructions taken straight from https://github.com/holgerbrandl/kscript#installation-without-sdkman
+
+# Ensure dependencies are present
+if [[ ! -x $(command -v curl) ]] || [[ ! -x $(command -v unzip) ]]; then
+    echo "[-] Dependencies unmet.  Please verify that the following are installed and in the PATH:  curl or unzip" >&2
+    exit 1
+fi
+
 if [ "$ASDF_INSTALL_TYPE" = "ref" ]
 then
 	git clone "$ASDF_INSTALL_VERSION" "$ASDF_INSTALL_PATH"
@@ -19,6 +26,6 @@ else
 
 		cp -R ${FILE_NAME}/* .
 		rm -rf ${FILE_NAME}/
-		chmod +x bin/*
+		mv kscript-${ASDF_INSTALL_VERSION}/* .
 	fi
 fi
