@@ -30,7 +30,6 @@ else
 		unzip -o ${ZIP}
 		rm ${ZIP}
 
-		cp -R ${FILE_NAME}/* .
 		rm -rf ${FILE_NAME}/
 		mv kscript-${ASDF_INSTALL_VERSION}/* .
 	fi
